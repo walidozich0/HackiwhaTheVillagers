@@ -1,0 +1,31 @@
+const { PrismaClient } = require('@prisma/client');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+
+const prisma = new PrismaClient();
+
+const login = async (email, password) => {
+  const user = await prisma.user.findUnique({ where: { email } });
+  if (!user || !(await bcrypt.compare(password, user.password))) {
+    return { status: 401, data: { message: 'Invalid credentials' } };
+  }
+
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1d' });
+
+
+  return { status: 200, data: { token, user } };
+};
+
+const register = async (userData) => {
+  const hashedPassword = await bcrypt.hash(userData.password, 10);
+  const user = await prisma.user.create({
+    data: {
+      ...userData,
+      password: hashedPassword,
+    },
+  });
+
+  return { status: 201, data: { user } };
+};
+
+module.exports = { login, register };

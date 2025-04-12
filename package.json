@@ -1,0 +1,33 @@
+{
+  "name": "hackiwha_the_villagers",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+    
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.6.0",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+<<<<<<< HEAD
+    "nodemailer": "^6.10.0",
+    "watcher": "^2.3.1"
+=======
+    "pg": "^8.14.1"
+>>>>>>> 7e0c1194013b0bccb7881c71a6173c88939577bf
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "prisma": "^6.6.0",
+    "typescript": "^5.8.3"
+  }
+}
